@@ -1,0 +1,257 @@
+// Variables
+
+$bg-color: hsl(210, 46%, 95%);
+$dark-blue: hsl(214, 17%, 51%);
+$light-blue: hsl(212, 23%, 69%);
+$dark-color: hsl(217, 19%, 35%);
+
+$font-size: 1.3rem;
+$font-family: 'Manrope', sans-serif;
+
+
+
+
+// CSS reset 
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+
+// Main styles
+
+body {
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: 500;
+  color: $dark-blue;
+  background-color: $bg-color;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 8rem 3rem;
+
+  @media (min-width:900px) {
+    margin: 0 2.5rem;
+  align-items: center;
+    min-height: 100vh;
+  }
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 3rem 4rem rgba(100, 100, 120, 0.3);
+  min-width: 30rem;
+  max-width: 42rem;
+  overflow: hidden;
+  position: relative;
+
+  @media (min-width: 900px) {
+    flex-direction: row;
+    max-width: 90rem;
+    align-items: stretch;
+    overflow: visible;
+  }
+
+  &__img-box {
+    border-radius: 1rem 1rem 0 0;
+    overflow: hidden;
+
+    @media (min-width: 900px) {
+      flex: 0 0 40%;
+      border-radius: 1rem 0 0 1rem ;
+    }
+
+    & img {
+      object-position: 0 -2rem ;
+      height: 100%;
+      width: 100%;
+
+      @media (min-width: 900px) {
+        object-position: 0;
+        object-fit: cover        
+      }
+    }
+  }
+
+&__content-box {
+  padding: 2.5rem 4rem;
+  margin-top: -2rem;
+  border-radius: 0 0 1rem 1rem;
+
+  @media (min-width: 900px) {
+    padding: 3rem 5rem;
+    margin-top: 0;
+    border-radius: 0 1rem 1 rem 0;
+  }
+}
+
+&__footer {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+&__share-btn {
+  border: none;
+  background-color: $bg-color;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  position: relative;
+  transition: all .8s;
+  z-index: 10;
+
+  &:hover, &--active {
+    background-color: $dark-blue;
+  
+  }
+
+  &:hover svg *, &--active svg * {
+    fill: #fff;
+  }
+}
+
+&__share-menu {
+  background-color: $dark-color;
+  width: 100%;
+  height: 8.5rem;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 3.5rem ;
+  transition: all .7s;
+
+
+  @media (min-width: 900px) {
+    width: 24rem;
+    bottom: 7.8rem;
+    right: -5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+
+    &::before {
+      content: '';
+      border: 2rem solid;
+      border-color: $dark-color transparent transparent transparent;
+      position: absolute;
+      bottom: -3rem;
+      right: 40%;
+      z-index: 5;
+    }
+  }
+}
+
+}
+
+.article {
+  &-title {
+    min-height: 0vw;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: $dark-color;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 1.6rem;
+    
+  }
+  
+  &-text {
+    line-height: 1.6;
+    letter-spacing: .3px;
+  }
+
+  &-author-box {
+    display: flex;
+    align-items: center;
+
+    &__avatar {
+      border-radius: 50%;
+      width:4rem;
+      height: 4rem;
+    }
+
+    &__text {
+      margin-left: 1.8rem;
+
+      & .article-name {
+        color: $dark-color;
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-bottom: 0.4rem;
+      }
+
+      & .article-date {
+        color: $light-blue;
+      }
+    }
+  }
+}
+
+
+.card__share-menu {
+  & .menu-title {
+    text-transform: uppercase;
+    letter-spacing: .6rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $light-blue;
+  }
+
+  & .menu-icons {
+    margin-left: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.icon {
+  margin-right: 1.6rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon:hover * {
+  fill: var(--color-primary-light);
+  transition: all .3s;
+}
+
+
+
+// Hide the Sharing Menu 
+
+.hidden {
+  display: hidden;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all .5s;
+
+  @media (min-width:900px) {
+    transform: unset;
+  }
+}
+
+
+// Sharing Menu
+
